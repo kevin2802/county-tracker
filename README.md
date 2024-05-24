@@ -4,6 +4,8 @@ Will keep track of how many counties a user has visited
 will rank users based on counties visited  
 Will display other information about counties  
 
+Will use MERN stack
+
 
 
 HOME PAGE (Display Map)  
