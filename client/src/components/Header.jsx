@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-
+//NEED TO CHANGE THIS FOR FINAL WEBSITE BUILD
+//maybe add different maps to go to
 export default function Header() {
   return (
     <div className='bg-slate-200'>
