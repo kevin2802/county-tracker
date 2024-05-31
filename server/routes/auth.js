@@ -4,7 +4,7 @@ import bcryptjs from 'bcryptjs'
 
 const router = express.Router();
 
-router.post('/signup', async (req,res)=>{
+router.post('/signup', async (req,res,next)=>{
     const{username,email,password}=req.body;
     //sync bc this is synchronous
     const hashedpw = bcryptjs.hashSync(password,10);
@@ -14,7 +14,7 @@ router.post('/signup', async (req,res)=>{
         await newUser.save();
         res.status(201),json({message:"user created succesfully"})    
     }catch(error){
-        res.status(500).json(error.message);
+        next(error)
     }
     
 })

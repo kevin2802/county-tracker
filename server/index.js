@@ -23,5 +23,17 @@ app.listen(3000,()=>{
 
 //routes could live here (app.get/app.post) or in their own files
 
+
 app.use("/server/user",userRoutes);
-app.use("/server/auth",authroute)
+app.use("/server/auth",authroute);
+//middleware for error handling
+app.use((err,req,res,next)=>{
+    const statusCode = err.statusCode || 500;
+    const message = err.message || "Internal Server rror";
+    return res.status(statusCode).json({
+        success:false,
+        message,
+        statusCode,
+    })
+})
+  
