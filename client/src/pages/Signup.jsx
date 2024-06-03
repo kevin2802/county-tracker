@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 export default function Signup() {
     const [formData,setFormData] = useState({})
-    const [error,setError]=useState(null);
+    const [error,setError]=useState(false);
     const [loading,setLoading]=useState(false);
 
     const handleChange=(e)=>{//need to save changes in state
@@ -14,6 +14,7 @@ export default function Signup() {
         e.preventDefault();
         try {
             setLoading(true);
+            setError(false);
             const res = await fetch('/server/auth/signup',{
                 method:'POST',
                 headers:{
@@ -24,7 +25,11 @@ export default function Signup() {
             const data = await res.json();
             console.log(data); {message: 'userCreatedsuccesfully'}
             setLoading(false);
-            setError(false);
+            //when using fetch to show error need to do this:
+            if(data.success === false){
+                setError(true);
+                return;
+            }
         }catch(error){
             setLoading(false);
             setError(true);
@@ -48,6 +53,7 @@ export default function Signup() {
         <span className='text-blue-500'>Sign in</span>
         </Link>
       </div>
+      <p className='text-red-700 mt-5'>{error && "Something went wrong! :("}</p>
     </div>
 
   )
