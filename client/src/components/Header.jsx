@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 //NEED TO CHANGE THIS FOR FINAL WEBSITE BUILD
 //maybe add different maps to go to
+//change map to dropdown menu
 export default function Header() {
   return (
     <div className='bg-slate-200'>
@@ -14,11 +15,14 @@ export default function Header() {
                 <Link to='/'>
                 <li>Home</li>
                 </Link>
-                <Link to='/About'>
+                <Link to='/about'>
                 <li>About</li>
                 </Link>
-                <Link to='Signin'>
+                <Link to='/sign-in'>
                 <li>Sign In</li>
+                </Link>
+                <Link to='/states-map'>
+                <li>US States Tracker</li>
                 </Link>
             </ul>
       </div>
