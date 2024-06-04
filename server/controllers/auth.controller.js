@@ -1,6 +1,7 @@
 import User from '../models/user.js';
 import bcryptjs from 'bcryptjs';
 import { errorHandler } from '../utils/error.js';
+import jwt from 'jsonwebtoken'
 
 
 export const signup = async (req,res,next)=>{
@@ -20,7 +21,7 @@ export const signup = async (req,res,next)=>{
 export const signin = async(req,res,next)=>{
     const{email,password}=req.body;
     try{
-        const validUser = await User.findOne({email});//search for email using mongoose
+        const validUser = await User.findOne({ email });//search for email using mongoose
         if(!validUser){//if email doesnt exist in db throw error
             return next(errorHandler(401,"invalid credentials"));
         }
@@ -39,9 +40,11 @@ export const signin = async(req,res,next)=>{
         //could delete and have to relogin everytime
         const expireDate = new Date(Date.now()+360000)//1 hour from now
 
-        res.cookies('accesstoken',token,{ httpOnly:true ,expires:expireDate}).status(200).json(rest);
+        res.cookie('accesstoken',token,{ httpOnly:true ,expires:expireDate}).status(200).json(rest);
     }
     catch(error){
+        //uses handle error
+        console.log(error)
         next(error);
     }
 }

@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import{set}from 'mongoose';
 
 
 export default function Signup() {
@@ -53,7 +54,7 @@ export default function Signup() {
         <span className='text-blue-500'>Sign in</span>
         </Link>
       </div>
-      <p className='text-red-700 mt-5'>{error && "Something went wrong! :("}</p>
+      <p className='text-red-700 mt-5'>{error && "Something went wrong! Try a different username/email:("}</p>
     </div>
 
   )
