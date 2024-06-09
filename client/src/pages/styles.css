@@ -1,0 +1,14 @@
+.svg-map .state {
+    fill: #eceff1;
+    stroke: #ffffff;
+    cursor: pointer;
+    outline: none;
+  }
+  
+  .svg-map .state:hover {
+    fill: #cfd8dc;
+  }
+  
+  .svg-map .state.selected {
+    fill: #3c3c47;
+  }

@@ -21,9 +21,8 @@ export default function Header() {
                 <Link to='/sign-in'>
                 <li>Sign In</li>
                 </Link>
-                <Link to='/states-map'>
-                <li>US States Tracker</li>
-                </Link>
+                
+                
             </ul>
       </div>
     </div>
