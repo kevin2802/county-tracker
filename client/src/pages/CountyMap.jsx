@@ -1,15 +1,13 @@
-import React, { useState } from 'react';
-import USA from '@svg-maps/usa';
-import reactDOM from "react-dom"
-import { CheckboxSVGMap } from 'react-svg-map';
-import{SVGMap}from "react-svg-map"
-import 'react-svg-map/lib/index.css';
+import React from 'react'
+import{CheckboxSVGMap}from "react-svg-map"
+import USCounties from '@svg-maps/usa.counties';
 import './styles.css';
 import Subheader from '../components/subheader';
+import { useState } from 'react';
 
 
-export default function Statesmap() {
-  const [selectedStates,setselectedStates]= useState([]);
+export default function CountyMap() {
+    const [selectedStates,setselectedStates]= useState([]);
   const handleLocationClick = (selected)=>{
     console.log("Selected locations:",selected);
     setselectedStates(selected.map(location=>location.id))
@@ -18,16 +16,13 @@ export default function Statesmap() {
     return selectedStates.includes(location.id) ? 'state selected' : 'state';
   }
   return (
-
     <div>
-      <Subheader/>
-      <CheckboxSVGMap map={USA} onChange={handleLocationClick}locationClassName={getLocationClassName}/>
-      <div>
+    <Subheader></Subheader>
+      <CheckboxSVGMap map={USCounties}onChange={handleLocationClick}locationClassName={getLocationClassName}/>
       {selectedStates.map((stateId) => (
           <p key={stateId}>{stateId} visited</p>
         ))}
-      </div>
-      
     </div>
+    
   )
 }

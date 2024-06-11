@@ -12,3 +12,8 @@
   .svg-map .state.selected {
     fill: #3c3c47;
   }
+  .svg-map {
+    width:90%;
+    height:auto;
+
+  }
