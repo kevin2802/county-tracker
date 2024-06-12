@@ -11,7 +11,6 @@ import VisitedStatesList from '../components/visitedList';
 export default function Statesmap() {
   const [selectedStates,setselectedStates]= useState([]);
   const handleLocationClick = (selected)=>{
-    console.log("Selected locations:",selected);
     setselectedStates(selected.map(location=>location.id))
   }
   

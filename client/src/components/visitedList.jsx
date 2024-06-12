@@ -53,27 +53,34 @@ const stateNames = {
   wy: 'Wyoming'
 };
 
-const VisitedStatesList = ({ selectedStates,type }) => {
-    console.log(type)
+const VisitedStatesList = ({ selectedStates, type }) => {
+  const formattedStates = type === 'States' 
+    ? selectedStates.map(stateId => stateNames[stateId] || stateId) 
+    : selectedStates.map(county => county.replace(/-/g, ' '));
+
   return (
     <div className='overflow-x-auto'>
-        <table className='min-w-full divide-y divide-gray-200'>
-            <thead className='bg-gray-50'>
-                <tr>
-                    <th>{type} Visited</th>
-                </tr>
-            </thead>
-            <tbody className='bg-white divide-y divide-gray-200'>
-                {selectedStates.map((stateId) => (
-                <tr key={stateId}>
-                    <td>{stateNames[stateId]}</td>
-                </tr>
-                ))}
-            </tbody>
-        </table>
-     
+      <table className='min-w-full divide-y divide-gray-200'>
+        <thead className='bg-gray-50'>
+          <tr>
+            <th className='px-6 py-3 text-left text-xs text-gray-500 uppercase tracking-wider'>
+              {type} Visited
+            </th>
+          </tr>
+        </thead>
+        <tbody className='bg-white divide-y divide-gray-200'>
+          {formattedStates.map((location, index) => (
+            <tr key={index}>
+              <td className='px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900'>
+                {location}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };
+
 
 export default VisitedStatesList;

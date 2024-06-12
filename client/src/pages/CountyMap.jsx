@@ -4,12 +4,12 @@ import USCounties from '@svg-maps/usa.counties';
 import './styles.css';
 import Subheader from '../components/subheader';
 import { useState } from 'react';
+import VisitedStatesList from '../components/visitedList';
 
 
 export default function CountyMap() {
     const [selectedStates,setselectedStates]= useState([]);
   const handleLocationClick = (selected)=>{
-    console.log("Selected locations:",selected);
     setselectedStates(selected.map(location=>location.id))
   }
   const getLocationClassName = (location)=>{
@@ -19,9 +19,7 @@ export default function CountyMap() {
     <div>
     <Subheader></Subheader>
       <CheckboxSVGMap className='Countymap'map={USCounties}onChange={handleLocationClick}locationClassName={getLocationClassName}/>
-      {selectedStates.map((stateId) => (
-          <p key={stateId}>{stateId} visited</p>
-        ))}
+      <VisitedStatesList selectedStates={selectedStates} type = {'Counties'}></VisitedStatesList>
     </div>
     
   )
