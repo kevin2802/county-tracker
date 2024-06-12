@@ -1,9 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 //NEED TO CHANGE THIS FOR FINAL WEBSITE BUILD
 //maybe add different maps to go to
 //change map to dropdown menu
 export default function Header() {
+  const [isDropdownOpen,setIsDropdownOpen]=useState(false)
+  //dropdown is default closed
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
   return (
     <div className='bg-slate-200'>
       <div className='flex justify-between items-center max-w-6xl mx-auto
@@ -21,7 +26,25 @@ export default function Header() {
                 <Link to='/sign-in'>
                 <li>Sign In</li>
                 </Link>
-                
+                <li className="relative">
+            <button
+              className="flex items-center"
+              onClick={toggleDropdown}
+            >
+              Maps
+              
+            </button>
+            {isDropdownOpen && (
+              <ul className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-10">
+                <li className="px-4 py-2 hover:bg-gray-100">
+                  <Link to="/states-map">States Map</Link>
+                </li>
+                <li className="px-4 py-2 hover:bg-gray-100">
+                  <Link to="/county-map">County Map</Link>
+                </li>
+              </ul>
+            )}
+          </li>
                 
             </ul>
       </div>
