@@ -1,19 +1,25 @@
-.svg-map .state {
+.state {
     fill: #eceff1;
     stroke: #ffffff;
     cursor: pointer;
     outline: none;
   }
   
-  .svg-map .state:hover {
+.state:hover {
     fill: #cfd8dc;
   }
   
-  .svg-map .state.selected {
+.state.selected {
     fill: #3c3c47;
   }
-  .svg-map {
-    width:90%;
+ .StateMap {
+    
+    width:75%;
     height:auto;
 
   }
+
+.Countymap{
+  width:98%;
+  height:auto;
+}

@@ -18,7 +18,7 @@ export default function CountyMap() {
   return (
     <div>
     <Subheader></Subheader>
-      <CheckboxSVGMap map={USCounties}onChange={handleLocationClick}locationClassName={getLocationClassName}/>
+      <CheckboxSVGMap className='Countymap'map={USCounties}onChange={handleLocationClick}locationClassName={getLocationClassName}/>
       {selectedStates.map((stateId) => (
           <p key={stateId}>{stateId} visited</p>
         ))}
