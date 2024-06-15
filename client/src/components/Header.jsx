@@ -1,14 +1,18 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux';
+import { current } from '@reduxjs/toolkit';
 //NEED TO CHANGE THIS FOR FINAL WEBSITE BUILD
 //maybe add different maps to go to
 //change map to dropdown menu
+
 export default function Header() {
   const [isDropdownOpen,setIsDropdownOpen]=useState(false)
   //dropdown is default closed
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
+  const {currentUser }= useSelector((state)=>state.user)
   return (
     <div className='bg-slate-200'>
       <div className='flex justify-between items-center max-w-6xl mx-auto
@@ -24,7 +28,12 @@ export default function Header() {
                 <li>About</li>
                 </Link>
                 <Link to='/sign-in'>
-                <li>Sign In</li>
+                {currentUser ? (
+                  <li>{currentUser.username}</li>
+                ):(
+                  <li>Sign In</li>
+                )}
+               
                 </Link>
                 <li className="relative">
             <button
