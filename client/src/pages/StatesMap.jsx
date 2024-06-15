@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useEffect } from 'react';
 import USA from '@svg-maps/usa';
 import reactDOM from "react-dom"
 import { CheckboxSVGMap } from 'react-svg-map';
@@ -10,6 +11,7 @@ import VisitedStatesList from '../components/visitedList';
 
 export default function Statesmap() {
   const [selectedStates,setselectedStates]= useState([]);
+  const userId = ''
   const handleLocationClick = (selected)=>{
     setselectedStates(selected.map(location=>location.id))
   }
