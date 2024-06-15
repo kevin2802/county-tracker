@@ -1,5 +1,5 @@
-import User from "../models/user";
-import { errorHandler } from "../utils/error";
+import User from "../models/user.js";
+import { errorHandler } from "../utils/error.js";
 
 export const saveMapState = async(req,res,next)=>{
     const {userId,mapState}=req.body;

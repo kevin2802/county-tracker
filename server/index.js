@@ -3,6 +3,7 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import userRoutes from './routes/user.js'
 import authroute from './routes/auth.js'
+import mapRoutes from'./routes/map.js'
 //this is where the server lives
 
 //allow dotenv to work
