@@ -26,6 +26,8 @@ app.listen(3000,()=>{
 
 app.use("/server/user",userRoutes);
 app.use("/server/auth",authroute);
+app.use("/server/map", mapRoutes);
+
 //middleware for error handling
 app.use((err,req,res,next)=>{
     const statusCode = err.statusCode || 500;

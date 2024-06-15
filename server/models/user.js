@@ -18,6 +18,10 @@ const userSchema = new mongoose.Schema({
         required:true,
 
         
+    },
+    mapState: {
+        type: Object,
+        default: {},
     }
 },
 {timestamps:true});
