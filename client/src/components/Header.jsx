@@ -45,10 +45,12 @@ export default function Header() {
             </button>
             {isDropdownOpen && (
               <ul className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg z-10">
-                <li className="px-4 py-2 hover:bg-gray-100">
+                <li className="px-4 py-2 hover:bg-gray-100"               onClick={toggleDropdown}
+                >
                   <Link to="/states-map">States Map</Link>
                 </li>
-                <li className="px-4 py-2 hover:bg-gray-100">
+                <li className="px-4 py-2 hover:bg-gray-100"              onClick={toggleDropdown}
+                >
                   <Link to="/county-map">County Map</Link>
                 </li>
               </ul>
