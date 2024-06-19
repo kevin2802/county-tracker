@@ -11,7 +11,8 @@ Will use MERN stack
 
 
 HOME PAGE (Display Map)  
-OTHER MAPS??  
+STATES MAP  
+COUNTIES MAP  
 SIGN IN PAGE (SAVE MAP)  
 SIGN UP PAGE (create account)  
-ABOUT PAGE??  
+ABOUT PAGE
