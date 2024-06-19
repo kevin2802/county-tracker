@@ -2,6 +2,7 @@ import User from "../models/user.js";
 import { errorHandler } from "../utils/error.js";
 
 export const saveMapState = async(req,res,next)=>{
+    console.log(req.body.mapState)
     const {userId,mapState}=req.body;
     try{
         const user = await User.findById(userId)
