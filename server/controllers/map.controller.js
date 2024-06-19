@@ -9,6 +9,9 @@ export const saveMapState = async(req,res,next)=>{
         if(!user){
             return next(errorHandler(404,"user not found"));
         }
+        user.mapState = mapState;
+        await user.save()
+        res.status(200).json({ message: 'map state saved succesfully' });
     }
     catch(error){
         next(error)
@@ -18,9 +21,12 @@ export const saveMapState = async(req,res,next)=>{
 
 };
 export const getMapState = async(req,res,next)=>{
-    const { userID } = req.params;
+    console.log(req.query)
+    const  userID  = req.query.user;
+    console.log("SFJSNF")
+    console.log(userID)
     try {
-        const user = await User.findById(userId);
+        const user = await User.findById(userID);
         if (!user) {
             return next(errorHandler(404, 'User not found'));
         }

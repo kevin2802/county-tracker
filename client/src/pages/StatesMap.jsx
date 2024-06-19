@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useEffect } from 'react';
 import USA from '@svg-maps/usa';
-import reactDOM from "react-dom"
 import { CheckboxSVGMap } from 'react-svg-map';
 import 'react-svg-map/lib/index.css';
 import './styles.css';
@@ -15,6 +14,29 @@ export default function Statesmap() {
   const { currentUser } = useSelector((state) => state.user);
   const userId = currentUser ? currentUser._id : null;
   
+  useEffect(()=>{
+    if(userId!=null){
+      const apiUrl = '/server/map/update'
+      const queryParams = {
+        user: userId,
+      };
+      const queryString = new URLSearchParams(queryParams).toString();
+      const fullUrl = `${apiUrl}?${queryString}`;
+      fetch(fullUrl)
+      .then(response=>{
+        if(!response.ok){
+          throw new Error('failed to fetch map')
+        }
+        return response.json();
+      })
+      .then(data=>{
+        setselectedStates(Array.isArray(data)?data:[])
+      })
+      .catch(error => console.error('Error fetching map state:', error))
+    }
+  }, [userId])
+
+
   const updateMapState = async (newSelectedStates) => {
     try {
       const res = await fetch('/server/map/save', {
@@ -38,7 +60,10 @@ export default function Statesmap() {
   const handleLocationClick = (selected)=>{
     const newSelectedStates = selected.map(location => location.id);
     setselectedStates(newSelectedStates)
-    updateMapState(newSelectedStates)
+    if(userId!= null){
+      updateMapState(newSelectedStates)
+    }
+    
   }
   
   const getLocationClassName = (location)=>{
