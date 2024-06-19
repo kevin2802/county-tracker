@@ -22,6 +22,10 @@ const userSchema = new mongoose.Schema({
     mapState: {
         type: Object,
         default: {},
+    },
+    countyMapState:{
+        type:Object,
+        default:{},
     }
 },
 {timestamps:true});

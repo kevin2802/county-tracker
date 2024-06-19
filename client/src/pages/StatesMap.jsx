@@ -19,6 +19,7 @@ export default function Statesmap() {
       const apiUrl = '/server/map/update'
       const queryParams = {
         user: userId,
+        type:'STATE',
       };
       const queryString = new URLSearchParams(queryParams).toString();
       const fullUrl = `${apiUrl}?${queryString}`;
@@ -47,6 +48,7 @@ export default function Statesmap() {
         body: JSON.stringify({
           userId,
           mapState: newSelectedStates,
+          mapType:'STATE',
         }),
       });
 
