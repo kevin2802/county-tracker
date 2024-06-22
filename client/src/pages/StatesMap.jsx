@@ -60,7 +60,8 @@ export default function Statesmap() {
     }
   };
   const handleLocationClick = (selected)=>{
-    const newSelectedStates = selected.map(location => location.id);
+    const selectedIds = selected.map(location => location.id);//what is being clicked 
+    const newSelectedStates = [...new Set([...selectedStates, ...selectedIds])];//combined with the data from the database so it is not reset in every click
     setselectedStates(newSelectedStates)
     if(userId!= null){
       updateMapState(newSelectedStates)
