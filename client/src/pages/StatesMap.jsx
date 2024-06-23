@@ -60,7 +60,29 @@ export default function Statesmap() {
     }
   };
   const handleLocationClick = (selected)=>{
-    const selectedIds = selected.map(location => location.id);//what is being clicked 
+    const selectedIds = selected.map(location => location.id);//what is being clicked
+    //selectedstates is what the database has 
+    //idea go through db --> if 
+    console.log(selectedIds)
+    selectedStates.forEach(state => {
+      if(selectedIds.includes(state)== false){
+        console.log(state)
+        console.log("NOT INCLUDED")
+        if(selectedStates.length===1){
+          selectedStates.splice(0)
+        }
+      }
+      else{
+        console.log(state)
+        console.log("INCLUDED")
+        const i = selectedStates.indexOf(state)
+        selectedStates.splice(i)
+        
+        
+      }
+      
+    });
+    console.log(selectedStates)
     const newSelectedStates = [...new Set([...selectedStates, ...selectedIds])];//combined with the data from the database so it is not reset in every click
     setselectedStates(newSelectedStates)
     if(userId!= null){
