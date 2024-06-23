@@ -62,30 +62,28 @@ export default function Statesmap() {
   const handleLocationClick = (selected)=>{
     const selectedIds = selected.map(location => location.id);//what is being clicked
     //selectedstates is what the database has 
-    //idea go through db --> if 
+    //idea go through db --> if selectedIDs (which is what is being clicked)-
+    //does not match up with db, i.e something is removed, then remove it from selectedStates(what is in the db)
+    //if selectedStates is size 1 then we have to manually remove the last element if it is clicked
     console.log(selectedIds)
     selectedStates.forEach(state => {
       if(selectedIds.includes(state)== false){
-        console.log(state)
-        console.log("NOT INCLUDED")
+
         if(selectedStates.length===1){
           selectedStates.splice(0)
         }
       }
       else{
-        console.log(state)
-        console.log("INCLUDED")
         const i = selectedStates.indexOf(state)
         selectedStates.splice(i)
-        
         
       }
       
     });
-    console.log(selectedStates)
-    const newSelectedStates = [...new Set([...selectedStates, ...selectedIds])];//combined with the data from the database so it is not reset in every click
+    //combine the array that is clicked with the array from the db
+    const newSelectedStates = [...new Set([...selectedStates, ...selectedIds])];
     setselectedStates(newSelectedStates)
-    if(userId!= null){
+    if(userId!= null){//only do this if there exists a db (if there is a user)
       updateMapState(newSelectedStates)
     }
     
