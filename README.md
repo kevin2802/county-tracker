@@ -16,3 +16,7 @@ COUNTIES MAP
 SIGN IN PAGE (SAVE MAP)  
 SIGN UP PAGE (create account)  
 ABOUT PAGE
+
+Run with    
+> npm run dev  
+in both client and server directories  
