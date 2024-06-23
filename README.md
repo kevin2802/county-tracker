@@ -19,4 +19,4 @@ ABOUT PAGE
 
 Run with    
 > npm run dev  
-in both client and server directories  
+
