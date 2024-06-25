@@ -1,9 +1,9 @@
 import React from 'react'
 
-export default function About() {
+export default function Board() {
   return (
     <div>
-      About
+      <h1>coming soon</h1>
     </div>
   )
 }

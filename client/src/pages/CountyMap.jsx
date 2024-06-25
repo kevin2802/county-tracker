@@ -59,12 +59,33 @@ export default function CountyMap() {
     }
   };
   const handleLocationClick = (selected)=>{
-    const selectedIds = selected.map(location => location.id);//what is being clicked 
+    const selectedIds = selected.map(location => location.id);//what is being clicked
+    //selectedstates is what the database has 
+    //idea go through db --> if selectedIDs (which is what is being clicked)-
+    //does not match up with db, i.e something is removed, then remove it from selectedStates(what is in the db)
+    //if selectedStates is size 1 then we have to manually remove the last element if it is clicked
+    console.log(selectedIds)
+    selectedStates.forEach(state => {
+      if(selectedIds.includes(state)== false){
+
+        if(selectedStates.length===1){
+          selectedStates.splice(0)
+        }
+      }
+      else{
+        const i = selectedStates.indexOf(state)
+        selectedStates.splice(i)
+        
+      }
+      
+    });
+    //combine the array that is clicked with the array from the db
     const newSelectedStates = [...new Set([...selectedStates, ...selectedIds])];
-    setselectedStates(newSelectedStates)//set state
-    if(userId!= null){
-      updateMapState(newSelectedStates)//update map 
+    setselectedStates(newSelectedStates)
+    if(userId!= null){//only do this if there exists a db (if there is a user)
+      updateMapState(newSelectedStates)
     }
+    
   }
   const getLocationClassName = (location)=>{
     return selectedStates.includes(location.id) ? 'state selected' : 'state';
