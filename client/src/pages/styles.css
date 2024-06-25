@@ -23,3 +23,17 @@
   width:98%;
   height:auto;
 }
+.home {
+  fill: #77779e;
+    stroke: #ffffff;
+    cursor: pointer;
+    outline: none;
+}
+.home:hover {
+  fill: #cfd8dc;
+}
+
+.home.selected {
+  fill: #eceff1;
+
+}
